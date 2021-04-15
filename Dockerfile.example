@@ -1,3 +1,5 @@
+FROM alpine:latest
+COPY
 FROM	golang:1.7.3 AS builder
 
 WORKDIR /
@@ -8,6 +10,7 @@ RUN	go get -d -v golang.org/x/net/html \
 
 CMD	["./app"]
 
-FROM	alpine:latest
 COPY	--from=builder ./app .
 CMD	["./app"]
+
+
